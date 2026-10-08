@@ -1,0 +1,16 @@
+# ProteinGT full requirements (Python 3.10+; developed on 3.14, torch cu132, Win11)
+torch>=2.3
+torch-geometric>=2.5
+transformers>=4.40
+tokenizers>=0.19
+biopython>=1.83
+scikit-learn>=1.4
+scipy>=1.13
+numpy>=1.26
+pandas>=2.2
+tqdm>=4.66
+pyyaml>=6.0
+matplotlib>=3.8
+seaborn>=0.13
+networkx>=3.3
+requests>=2.31

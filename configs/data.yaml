@@ -1,0 +1,35 @@
+# ProteinGT Phase 1 — data acquisition config
+uniprot:
+  base: "https://rest.uniprot.org/uniprotkb/search"
+  query: "(reviewed:true) AND (ec:*) AND (length:[50 TO 1000]) AND ((existence:1) OR (existence:2))"
+  non_enzyme_query: "(reviewed:true) AND (NOT ec:*) AND (length:[50 TO 1000]) AND ((existence:1) OR (existence:2))"
+  fields: "accession,id,gene_names,organism_name,length,sequence,ec,protein_existence,xref_pdb,annotation_score"
+  page_size: 500
+  pilot_size: 500
+  max_full_records: 30000
+  non_enzyme_sample: 2000
+labels:
+  top_n_ec: 100
+  min_examples_per_ec: 50
+  max_per_ec: 200
+alphafold:
+  api: "https://alphafold.ebi.ac.uk/api/prediction"
+  workers: 6
+  retry: 3
+  timeout_s: 60
+  plddt_flag_below: 70.0
+paths:
+  raw_tsv: "data/raw/uniprot_ec_raw.tsv"
+  labels_csv: "data/raw/labels_raw.csv"
+  structures_dir: "data/raw/structures"
+  acquisition_log: "data/raw/acquisition_log.csv"
+  data_card: "data/raw/DATA_CARD.md"
+phase2:
+  ambig_max_frac: 0.05
+  drop_partial_ec: true
+  min_examples_per_ec: 50
+  mmseqs: "--min-seq-id 0.4 -c 0.8 --cov-mode 0"
+  mmseqs_version: "15-6f452 (static avx2, WSL Ubuntu)"
+  n_clusters: 1769
+  split_ratio: [0.70, 0.15, 0.15]
+  split_seed: 42

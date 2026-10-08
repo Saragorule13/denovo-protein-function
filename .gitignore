@@ -1,0 +1,49 @@
+# ---- ProteinGT: keep code + configs + small metadata; drop large/regenerable data ----
+
+# raw bulk data
+data/raw/structures/
+data/raw/*.tsv
+data/raw/*.csv
+data/raw/*.pdb
+data/raw/*.cif
+
+# processed bulk data (regenerable via src/data + src/features)
+data/processed/embeddings/
+data/processed/graphs/
+data/processed/*.fasta
+data/processed/clean.csv
+data/processed/mm_all_seqs.fasta
+data/processed/mm_rep_seq.fasta
+
+# keep (NOT ignored): label_map.json, splits.json, random_split.json,
+# class_stats.csv, split_stats.csv, graphs_manifest.csv, embeddings_manifest.csv,
+# mm_cluster.tsv, DATA_CARD*.md  (small, needed for reproducibility)
+
+# model checkpoints & logs
+checkpoints/
+*.pt
+*.ckpt
+runs/
+lightning_logs/
+
+# results figures (regenerable; uncomment to exclude)
+# results/*.png
+
+# python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# huggingface cache (lives outside repo by default, just in case)
+.huggingface/
+hub/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.code-workspace
